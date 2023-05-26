@@ -38,7 +38,7 @@ Users should be able to:
 - Flexbox
 - Mobile-first workflow
 - [IP Geolocation API by IPify](https://geo.ipify.org/)
-- [Mapbox Maps] (https://www.mapbox.com)
+- [Mapbox Maps](https://www.mapbox.com)
 
 ## Author
 
