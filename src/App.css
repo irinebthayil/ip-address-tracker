@@ -1,0 +1,125 @@
+.parent-div {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsl(228, 45%, 44%);
+  box-sizing: border-box;
+}
+
+.header-div {
+  background-image: url('./assets/pattern-bg-mobile.png');
+  background-repeat: no-repeat;
+  height: 220px;
+  text-align: center;
+  background-size: 100%;
+}
+
+.header-content {
+  box-sizing: border-box;
+  position: absolute;
+  padding: 24px;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.header-content h2 {
+  color: white;
+  text-align: center;
+}
+
+.searchbar {
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 24px;
+  height: 40px;
+  position: relative;
+}
+
+.searchbar input {
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  height: 40px;
+  padding-left: 4px;
+  position: absolute;
+  left: 8px;
+}
+
+.arrow-div {
+  background: black;
+  position: absolute;
+  display: flex;
+  right: 0;
+  height: 40px;
+  width: 36px;
+  border-radius: 0px 10px 10px 0px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ip-details {
+  margin-top: 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.details-header {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--color-darkGray);
+  font-weight: 700;
+}
+
+.details-content {
+  color: var(--color-veryDarkGray);
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+#map {
+  position: absolute;
+  top: 220px;
+  bottom: 0;
+  width: 100%;
+}
+
+@media only screen and (min-width: 920px) {
+  .header-div {
+    background-image: url('./assets/pattern-bg-desktop.png');
+  }
+
+  .searchbar {
+    width: 40%;
+    left: 30%;
+  }
+
+  .ip-details {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    text-align: none;
+    text-align: left;
+    margin-top: 56px;
+    margin-left: 132px;
+    margin-right: 132px;
+    padding: 28px;
+  }
+
+  .details-maindiv {
+    flex-grow: 1;
+    border-right: 0.5px solid var(--color-darkGray);
+  }
+
+  .details-maindiv:last-child {
+    flex-grow: 1;
+    border-right: none;
+  }
+}
