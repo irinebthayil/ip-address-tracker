@@ -104,7 +104,7 @@ function App() {
           </div>
           <div className='details-maindiv'>
             <p className='details-header'>TIMEZONE</p>
-            <p className='details-content'>UTC - {ipdetails.timezone}</p>
+            <p className='details-content'>{ipdetails.timezone}</p>
           </div>
           <div className='details-maindiv'>
             <p className='details-header'>ISP</p>
