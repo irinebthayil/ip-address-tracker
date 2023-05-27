@@ -58,7 +58,6 @@ function App() {
           setIPDetails(dets);
           let loc = [json.location.lng, json.location.lat];
           setLocation(loc);
-          console.log(json.location)
         }
         
       })
