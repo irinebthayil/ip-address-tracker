@@ -64,7 +64,9 @@ function App() {
           }
           dets.country = json.location.country;
           dets.postalCode = json.location.postalCode;
-          dets.timezone = json.location.timezone;
+          if (json.location.timezone) {
+            dets.timezone = "UTC - " + json.location.timezone;
+          }
           dets.isp = json.isp;
           setIPDetails(dets);
           let loc = [json.location.lng, json.location.lat];
