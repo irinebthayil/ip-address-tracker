@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import arrow from './assets/icon-arrow.svg'
 import mapboxgl from 'mapbox-gl'
@@ -9,25 +9,33 @@ function App() {
 
   const [location, setLocation] = useState([77.69557, 12.7111]);
 
-  useEffect(() => {
-    getIP();
-  }, []);
+  mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
+  const map = useRef(null);
+  const mapMarker = useRef(null);
 
   useEffect(() => {
-    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
-    const map = new mapboxgl.Map({
+    getIP();
+    if (map.current) return;
+    map.current = new mapboxgl.Map({
       container: 'map', // container ID
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
       zoom: 12, // starting zoom
     });
+  }, []);
 
-    map.flyTo({
+  useEffect(() => {
+    map.current.flyTo({
       center: location,
       essential: true
     });
-    const marker1 = new mapboxgl.Marker()
+
+    if(mapMarker.current)
+    {
+      mapMarker.current.remove();
+    }
+    mapMarker.current = new mapboxgl.Marker()
       .setLngLat(location)
-      .addTo(map);
+      .addTo(map.current);
   }, [location]);
 
   function getIP(ip=''){
@@ -50,7 +58,10 @@ function App() {
         else{
           let dets = {}
           dets.ip = json.ip;
-          dets.region = json.location.region;
+          if (json.location.region)
+          {
+            dets.region = json.location.region + ",";
+          }
           dets.country = json.location.country;
           dets.postalCode = json.location.postalCode;
           dets.timezone = json.location.timezone;
@@ -87,7 +98,7 @@ function App() {
           </div>
           <div className='details-maindiv'>
             <p className='details-header'>LOCATION</p>
-            <p className='details-content'>{ipdetails.region}, {ipdetails.country} {ipdetails.postalCode}</p>
+            <p className='details-content'>{ipdetails.region} {ipdetails.country} {ipdetails.postalCode}</p>
           </div>
           <div className='details-maindiv'>
             <p className='details-header'>TIMEZONE</p>
